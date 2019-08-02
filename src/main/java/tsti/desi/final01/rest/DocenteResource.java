@@ -25,7 +25,7 @@ import tsti.desi.final01.servicio.DocenteService;
 public class DocenteResource {
 
 	
-	@Autowired						// borrar
+	// TODO COMPLETAR 
 	DocenteService docenteService;  
 	
 	@GetMapping("docente")
@@ -41,7 +41,8 @@ public class DocenteResource {
 	
 	@PostMapping("docente")
 	public ResponseEntity<Docente> crear(@RequestBody Docente p,UriComponentsBuilder builder) {
-        Docente creado = this.docenteService.guardar(p); // borrar
+		
+		Docente creado = null; // TODO COMPLETAR. Cambiar null por el metodo de servicio que crea un docente
         if (creado == null) {
         	return new ResponseEntity<Docente>(HttpStatus.NO_CONTENT);
         }
