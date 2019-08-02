@@ -3,6 +3,8 @@ package tsti.desi.final01.rest;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -34,18 +38,20 @@ public class DocenteResourceTest {
     }
     		
 	@Test
-	public void testListarDocente() {
+	public void testCrearBuscarDocente() {
 		Docente d1= new Docente();
 		d1.setNombre("martin");
 		d1.setCreditos(5);
 		 
 	    ResponseEntity<Docente> resultPost = restTemplate.postForEntity(buildServerUrl("docente"), d1, Docente.class);
-		
-	    System.out.println(resultPost);
+		d1 = resultPost.getBody();
+	    System.out.println("*********************************************+"+resultPost);
 	    
-		ResponseEntity<Docente> response = restTemplate.
-		  getForEntity(buildServerUrl("docente/1"), Docente.class);
-		 System.out.println(response.getBody());
-		assertThat(response.getStatusCode(), equalTo(HttpStatus.OK));	
+	  ResponseEntity<List<Docente>> testListaDocentes = restTemplate.exchange(buildServerUrl("docente"), HttpMethod.GET, null,new ParameterizedTypeReference<List<Docente>>() {});
+	  System.out.println(".........+"+testListaDocentes.getBody());
+
+		assertNotNull(testListaDocentes.getBody());
+		Integer idEsperado = 1;
+		assertEquals(idEsperado, testListaDocentes.getBody().get(0).getId());
 	}
 }

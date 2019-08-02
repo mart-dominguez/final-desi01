@@ -14,7 +14,7 @@ public class Docente {
 	private Integer id;
 	private String nombre;
 	private Integer antiguedad;
-	@ManyToOne
+	@ManyToOne // borrar
 	private Curso cursoAsignado;
 	
 	public Integer getId() {

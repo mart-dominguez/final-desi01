@@ -13,14 +13,14 @@ import tsti.desi.final01.repositorio.DocenteRepository;
 @Service
 public class DocenteService {
 
-	@Autowired
+	@Autowired // borrar
 	private DocenteRepository docenteRepo;
 
-	@Autowired
+	@Autowired 
 	private CursoService cursoService;
 
 	public Docente guardar(Docente d) {
-		return this.docenteRepo.save(d);
+		return this.docenteRepo.save(d); // borrar
 	}
 	
 	public void borrar(Integer id) {

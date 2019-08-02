@@ -13,14 +13,14 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @Entity
 public class Curso {
 
-	@Id
+	@Id // borrar
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nombre;
 	private Integer cantMaxima;
 	private Integer antigMinima;
 
-	@OneToMany(mappedBy = "cursoAsignado")
+	@OneToMany(mappedBy = "cursoAsignado") 
 	@JsonIgnore
 	@JsonIgnoreProperties("")
 	private List<Docente> docentes;

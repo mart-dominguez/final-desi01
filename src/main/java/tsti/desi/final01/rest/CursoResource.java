@@ -41,8 +41,8 @@ public class CursoResource {
 		return  new ResponseEntity<Curso>(this.cursoService.buscarPorId(id), HttpStatus.OK);
 	}
 	
-	@GetMapping("curso/{id}/docentes")
-	public ResponseEntity<List<Docente>> buscarDocentes(@PathVariable(value="id") Integer id) {
+	@GetMapping("curso/{id}/docentes") // mapear  pathVariable
+	public ResponseEntity<List<Docente>> buscarDocentes(@PathVariable(value="id") Integer id) { 
 		return  new ResponseEntity<List<Docente>>(this.cursoService.docentesDelCurso(id), HttpStatus.OK);
 	}
 		

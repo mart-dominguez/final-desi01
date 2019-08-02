@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -24,9 +23,10 @@ import tsti.desi.final01.servicio.DocenteService;
 @RestController
 @RequestMapping("/api")
 public class DocenteResource {
+
 	
-	@Autowired
-	DocenteService docenteService;
+	@Autowired						// borrar
+	DocenteService docenteService;  
 	
 	@GetMapping("docente")
 	public ResponseEntity<List<Docente>> buscar() {
@@ -41,7 +41,7 @@ public class DocenteResource {
 	
 	@PostMapping("docente")
 	public ResponseEntity<Docente> crear(@RequestBody Docente p,UriComponentsBuilder builder) {
-        Docente creado = this.docenteService.guardar(p);
+        Docente creado = this.docenteService.guardar(p); // borrar
         if (creado == null) {
         	return new ResponseEntity<Docente>(HttpStatus.NO_CONTENT);
         }
